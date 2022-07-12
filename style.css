@@ -1,0 +1,283 @@
+/** https://piccalil.li/blog/a-modern-css-reset **/
+
+:root {
+  --cls-vary-dark-desaturated-blue: hsl(238, 29%, 16%);
+  --cls-soft-red: hsl(14, 88%, 65%);
+
+  /* Fradient Colors */
+  --cls-soft-violet: hsl(273, 75%, 66%);
+  --cls-soft-blue: hsl(240, 73%, 65%);
+
+  /* Neutral Colors */
+  --cls-very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --cls-dark-grayish-blue: hsl(240, 6%, 50%);
+
+  /* Divisor */
+  --cls-divisor: hsl(240, 5%, 91%);
+
+  --fs-base: 1rem;
+  --fs-small: 0.75rem;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+li {
+  margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Kumbh Sans', sans-serif;
+  background-image: linear-gradient(var(--cls-soft-violet), var(--cls-soft-blue));
+  padding: 1rem;
+  display: grid;
+  place-content: center;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-block: 1rem;
+  text-align: center;
+  color: var(--cls-vary-dark-desaturated-blue);
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+ul {
+  padding: 0;
+  position: relative;
+  z-index: 5;
+}
+
+ul li {
+  list-style: none;
+  position: relative;
+}
+
+label>span {
+  width: 13px;
+  height: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+p {
+  color: var(--cls-dark-grayish-blue);
+  font-size: var(--fs-small);
+}
+
+hr {
+  color: var(--cls-divisor);
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+main {
+  background-color: #ffffff;
+  border-radius: 1.25rem;
+  width: min(95%, 60rem);
+  /* overflow: hidden; */
+  font-size: var(--fs-base);
+  margin-inline: auto;
+  box-shadow: 0px 0px 10px hsla(0, 2%, 56%, 0.829);
+  color: var(--cls-vary-dark-desaturated-blue);
+  padding: 2rem;
+  position: relative;
+  margin-top: 10rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  min-height: 7rem;
+  margin-bottom: -1rem;
+}
+
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scale(2.1) translateY(-47%);
+}
+
+.image-container::after {
+  content: '';
+  position: absolute;
+  background-image: url('./images/illustration-woman-online-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  transform: scale(2.1) translateY(-47%);
+}
+
+.image-container::before {
+  content: '';
+  position: absolute;
+  background-image: url('./images/bg-pattern-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  transform: scale(1.2) translateY(-19%);
+}
+
+.accordion>.accordion-item {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  line-height: 26px;
+}
+
+.accordion:hover {
+  color: var(--cls-soft-red);
+}
+
+.accordion>input[type='checkbox']:checked+label+.accordion-item {
+  max-height: 22rem;
+  overflow: visible;
+}
+
+.accordion>label {
+  /* font-size: 1.25rem; */
+  padding: 0.55rem 0;
+}
+
+.accordion>input[type='checkbox']:checked+label {
+  font-weight: bold;
+}
+
+.accordion>input[type='checkbox']:checked+label>span {
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: 64em) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* overflow: hidden; */
+    padding: 0;
+    /* overflow: hidden; */
+    margin-top: 0;
+    position: relative;
+  }
+
+  .section {
+    padding: 2rem;
+    padding-bottom: 5rem;
+  }
+
+  .image-container {
+    margin: 0;
+    overflow: hidden;
+    padding: 10rem;
+  }
+
+  .image-container::after {
+    background-image: url('./images/bg-pattern-desktop.svg');
+    background-position: center left;
+    transform: scale(1.75) translateX(-6.85rem) translatey(-0.95rem);
+  }
+
+  .image-container::before {
+    background-image: url('./images/illustration-woman-online-desktop.svg');
+    background-position: center left;
+    top: 0;
+    left: 0;
+    transform: scale(1.0) translateX(-7rem);
+    z-index: 2;
+  }
+
+  .box-image {
+    position: absolute;
+    background-image: url('./images/illustration-box-desktop.svg');
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center left;
+    transform: translateX(-5.85rem) translatey(3rem);
+    z-index: 3;
+  }
+}
